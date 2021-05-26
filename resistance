@@ -1,0 +1,105 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+
+
+public class resistance implements ActionListener {
+    JFrame f;
+    JTextField t1,t2,t3,t4,t5,t6,t7;
+    JLabel l1,l2,l3,l4,l5,l6,l7;
+    JButton b;
+    double p,h,l,c,s1,s2,r1,r2;
+    resistance()
+    {
+        f=new JFrame("Support And Resistance Calculator");
+        t1=new JTextField();
+        t2=new JTextField();
+        t3=new JTextField();
+        t4=new JTextField();
+        t5=new JTextField();
+        t6=new JTextField();
+        t7=new JTextField();
+
+        b=new JButton("Press To Calculate");
+
+        l1=new JLabel("Enter Today's High: ");
+        l2=new JLabel("Enter Today's Low: ");
+        l3=new JLabel("Enter Today's Close: ");
+	l4=new JLabel("Support 1");
+	l5=new JLabel("Support 2");
+	l6=new JLabel("Resistance 1");
+	l7=new JLabel("Resistance 2");
+
+        l1.setBounds(20,60,150,30);
+        t1.setBounds(230,60,150,30);
+        l2.setBounds(20,120,150,30);
+        t2.setBounds(230,120,150,30);
+        l3.setBounds(20,180,150,30);
+        t3.setBounds(230,180,150,30);
+
+        b.setBounds(150,280,300,30);
+
+	l4.setBounds(20,340,150,30);
+        t4.setBounds(230,340,150,30);
+	l5.setBounds(20,400,150,30);
+        t5.setBounds(230,400,150,30);
+	l6.setBounds(20,460,150,30);
+        t6.setBounds(230,460,150,30);
+	l7.setBounds(20,520,150,30);
+        t7.setBounds(230,520,150,30);
+
+        f.add(l1);
+        f.add(t1);
+        f.add(l2);
+        f.add(t2);
+        f.add(l3);
+        f.add(t3);
+        f.add(b);
+	f.add(l4);
+        f.add(t4);
+	f.add(l5);
+        f.add(t5);
+	f.add(l6);
+        f.add(t6);
+	f.add(l7);
+        f.add(t7);
+
+        f.setLayout(null);
+        f.setVisible(true);
+        f.setSize(750,700);
+        f.setResizable(false);
+
+
+        b.addActionListener(this);
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==b)
+        {
+            h=Double.parseDouble(t1.getText());
+            l=Double.parseDouble(t2.getText());
+            c=Double.parseDouble(t3.getText());
+
+            p=(h + l +c)/3;
+            s1=(p * 2) - h;
+            s2=p - (h - l);
+            r1=(p * 2) - l;
+            r2=p + (h - l);
+
+	    
+
+            t4.setText(String.valueOf(s1));
+            t5.setText(String.valueOf(s2));
+            t6.setText(String.valueOf(r1));
+            t7.setText(String.valueOf(r2));
+
+        }
+    }
+    public static void main(String args[])
+    {
+        new resistance();
+    }
+}
